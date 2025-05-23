@@ -1,8 +1,9 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mvch.Models;
+using Mvch.Models;
+using System.Diagnostics;
 
-namespace Mvch.Controllers
+namespace MvcMovie.Controllers
 {
     public class HomeController : Controller
     {
@@ -13,9 +14,16 @@ namespace Mvch.Controllers
             _logger = logger;
         }
 
+
+
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         public IActionResult Privacy()
