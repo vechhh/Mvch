@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Mvch.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MvchContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvchContext") ?? throw new InvalidOperationException("Connection string 'MvchContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
